@@ -1,20 +1,16 @@
 enyo.ready(function () {
 
 	enyo.kind({
-		name: "Bootplate.MainView",
+		name: "FlyApp.MainView",
 		kind: "FittableRows",
 		fit: true,
 		bindings: [{
 			from: ".selected",
-			to: ".app.controllers.message.data",
+			to: ".app.controllers.uriController.data",
 			twoWay: true
 		}],
 		
 		selected: "",
-
-		selectedChanged: function() {
-			this.log(this.selected);
-		},
 		
 		components: [
 			{kind: "onyx.Toolbar", components: [
@@ -30,7 +26,7 @@ enyo.ready(function () {
 					{kind: "enyo.Scroller", fit: true, components: [{
 						name: "main",
 						kind: "enyo.DataRepeater",
-						controller: ".app.controllers.messages",
+						controller: ".app.controllers.collection",
 						components: [
 							{kind: "onyx.MenuItem", bindFrom: "uri", bindTo: ".uri", components: [
 								{content: "bookid : "},

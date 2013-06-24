@@ -1,7 +1,7 @@
 enyo.ready(function () {
 	
 	enyo.kind({
-		name: "Bootplate.MessageController",
+		name: "FlyApp.UriController",
 		kind: "enyo.Controller",
 		dataChanged: function () {
 			if (this.data.uri) {
@@ -11,7 +11,7 @@ enyo.ready(function () {
 					function(inSender, inData) {
 						var model = {};
 						if (this.app.first){
-							model = new enyo.Model();
+							model = new detailedEntry();
 							var clone = {};
 							for(key in inData.d){
 								if (key != "__metadata") {
@@ -49,13 +49,13 @@ enyo.ready(function () {
 	});
 	
 	enyo.kind({
-		name: "Bootplate.MessagesController",
+		name: "FlyApp.CollectionController",
 		kind: "enyo.Collection",
 		model: "notDetailedEntry"
 	});
 	
 	enyo.kind({
-		name: "Bootplate.DetailsController",
+		name: "FlyApp.DetailsController",
 		kind: "enyo.ModelController"
 	});
 	

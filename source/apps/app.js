@@ -1,41 +1,41 @@
 enyo.kind({
-	name: "Bootplate.Application",
+	name: "FlyApp.Application",
 	kind: "enyo.Application",
 	controllers: [{
-		name: "message",
-		kind: "Bootplate.MessageController"
+		name: "uriController",
+		kind: "FlyApp.UriController"
 	}, {
-		name: "messages",
-		kind: "Bootplate.MessagesController"
+		name: "collection",
+		kind: "FlyApp.CollectionController"
 	}, {
 		name: "details",
-		kind: "Bootplate.DetailsController"
+		kind: "FlyApp.DetailsController"
 	}],
-	view: "Bootplate.MainView",
+	view: "FlyApp.MainView",
 	first: true,
 	constructor: function () {
 		this.inherited(arguments);
 	},
 	fillRepeater: function (inSender, inEvent) {
 		var details = this.controllers.details;
-		//this.log(details);
-		var requestBookings = new enyo.OData({uri: "https://sapes1.sapdevcenter.com/sap/opu/odata/IWFND/RMTSAMPLEFLIGHT/", query: "BookingCollection?$format=json&$orderby=bookid asc&$top=100&$select=carrid,connid,fldate,bookid"});
+		var requestBookings = new enyo.OData({
+			uri: "https://sapes1.sapdevcenter.com/sap/opu/odata/IWFND/RMTSAMPLEFLIGHT/", 
+			query: "BookingCollection?$format=json&$orderby=bookid asc&$top=100&$select=carrid,connid,fldate,bookid"
+		});
 		requestBookings.response(
 			this, 
 			function(inSender, inData) {
-				var messages = this.controllers.messages;
-				var message = this.controllers.message;
+				var collection = this.controllers.collection;
+				var uriController = this.controllers.uriController;
 				var first = true;
-				messages.removeAll();
+				collection.removeAll();
 				enyo.forEach(
 					inData.d.results,
 					function (entry) {
 						if (first) {
 							first = false;
-							//this.log(message);
-							message.set("data", {uri: entry.__metadata.uri});
+							uriController.set("data", {uri: entry.__metadata.uri});
 						}
-						//messages.set("model", notDetailedEntry());
 						var date = new Date();
 						try {
 							var dateString = enyo.json.parse(entry.fldate);
@@ -47,8 +47,7 @@ enyo.kind({
 						}
 						entry.fldate = date.toLocaleString();
 						entry.uri = entry.__metadata.uri;
-						messages.add(entry);
-						/*messages.add({bookid: entry.bookid, carrid: entry.carrid, connid: entry.connid, fldate: date.toLocaleString(), uri: entry.__metadata.uri});*/
+						collection.add(entry);
 						this.view.$.menuItem.addClass("enyo-selected");
 					},
 					this
