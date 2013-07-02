@@ -1,4 +1,3 @@
 enyo.depends(
-	"additional.js",
-	"OData.js"
+	"additional.js"
 );

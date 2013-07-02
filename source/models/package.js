@@ -1,3 +1,7 @@
 enyo.depends(
-	"models.js"
+	"models.js",
+	"Source.js",
+	"BookingCollection.js",
+	"BookingEntry.js",
+	"Booking.js"
 );
