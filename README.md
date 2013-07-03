@@ -1,3 +1,18 @@
+Sample application showing a pattern of using enyo.Store, enyo.Source, enyo.Collection and enyo.Model as well as some new options in thew view layer.
+
+You will need to execute this application in Chrome and it must be started from the command line as follows in Mac OSX:
+
+`/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --disable-web-security`
+
+For sample data you will be asked for a username and password. Use these credentials:
+
+username: `P1940004657`
+password: `SAPd3m0p`
+
+
+---
+
+
 Fly App
 =========
 
