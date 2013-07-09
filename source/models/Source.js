@@ -9,5 +9,5 @@ enyo.kind({
 		"MaxDataServiceVersion": "2.0",
 		"Accept": "application/json",
 		"Content-Type": "application/json"
-	},
+	}
 });
