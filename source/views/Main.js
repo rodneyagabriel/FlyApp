@@ -12,7 +12,9 @@ enyo.kind({
 				{kind: "onyx.Toolbar", content: "Bookings"},
 				{kind: "enyo.Scroller", fit: true, components: [
 					{name: "main", kind: "enyo.DataRepeater", controller: ".app.controllers.collection", components: [
-						{kind: "FlyApp.MenuItem", onSelect: "bookingSelected", components: [
+						// by default enyo.DataRepeater (and subkinds) support selection (by default) so
+						// we don't need to define special operations for it
+						{kind: "onyx.MenuItem", selectionClass: "enyo-selected", components: [
 							{content: "bookid : "},
 							{classes: "nice-padding", bindFrom: ".bookid"},
 							{content: "carrid : "},
@@ -61,16 +63,6 @@ enyo.kind({
 				], controller: ".app.controllers.details"}
 			]}
 		]}
-	],
-	bookingSelected: function (sender, event) {
-		// the DataRepeater ensures that our events propagating from our children
-		// will have the model and child properties for convenience
-		var $r = event.child;
-		if (this.selectedRow && this.selectedRow !== $r) {
-			this.selectedRow.set("selected", false);
-		}
-		this.selectedRow = $r;
-		$r.set("selected", true);
-	}
+	]
 });
 

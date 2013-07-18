@@ -1,4 +1,3 @@
 enyo.depends(
-	"Main.js",
-	"Item.js"
+	"Main.js"
 );

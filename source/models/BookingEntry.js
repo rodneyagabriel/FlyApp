@@ -4,8 +4,10 @@
 enyo.kind({
 	name: "FlyApp.BookingEntry",
 	kind: "enyo.Model",
-	selected: false,
 	attributes: {
+		// moving this property to the attributes schema definition will
+		// allow the onChange event to be fired when that property changes
+		selected: false,
 		bookid: null,
 		carrid: null,
 		connid: null,

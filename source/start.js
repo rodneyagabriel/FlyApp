@@ -1,9 +1,5 @@
 enyo.ready(function () {
-	
-	// an enyo.Store is a singleton object that isn't required
-	// to use enyo.Model but it is requred when using enyo.Source
-	// so we create one with our overloaded source kind
-	new enyo.Store({source: "FlyApp.Source"});
+
 	new FlyApp.Application({name: "app"});
 	
 	// make sure to test out the synchronization between the view-state and
