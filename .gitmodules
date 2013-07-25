@@ -6,4 +6,4 @@
 	url = git://github.com/enyojs/layout.git
 [submodule "enyo"]
 	path = enyo
-	url = git://github.com/clinuz/enyo.git
+	url = git://github.com/enyojs/enyo.git
